@@ -4,7 +4,11 @@ async function getQuote() {
     return quote;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    quote = getQuote();
-    print(quote);
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const quote = await getQuote();
+        console.log(quote); // Use console.log instead of print()
+    } catch (error) {
+        console.error("Failed to fetch the quote:", error);
+    }
 });
