@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await changeDisplayedQuote();
     })
 
-    submitBtn.addEventListener("click", (event) => {
+    submitBtn.addEventListener("click", async (event) => {
         event.preventDefault();
         const author = authorInput.value;
         const quote = quoteInput.value;
