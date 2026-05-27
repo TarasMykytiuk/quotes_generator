@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+app.use(express.json());
 
 const quotes = [
     {
@@ -28,10 +29,13 @@ app.get("/get_quote", (req, res) => {
 });
 
 app.post("/post_quote", (req, res) => {
-    const author = req.body.author;
-    const quote = req.body.quote;
+    const { quote, author } = req.body;
+    if (!quote || !author) {
+        return res.status(400).send("Empty data!");
+    }
+
     quotes.push({ quote: quote, author: author });
-    return res.status(200).send({ message: "Success!" });
+    return res.status(200).json({ message: "Success!" });
 });
 
-app.listen(3000, () => console.log("Server running..."));
+app.listen(process.env.PORT || 3000, () => console.log("Server running..."));
