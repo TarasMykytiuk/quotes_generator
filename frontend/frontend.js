@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const author = authorInput.value;
         const quote = quoteInput.value;
         await postQuote(quote, author);
+        authorInput.value = "";
+        quoteInput.value = "";
     })
 });
 
