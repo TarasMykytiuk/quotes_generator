@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         event.preventDefault();
         const author = authorInput.value;
         const quote = quoteInput.value;
+        if (!quote || !author) {
+            alert("Empty data!");
+            return
+        }
         await postQuote(quote, author);
         authorInput.value = "";
         quoteInput.value = "";
